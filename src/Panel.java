@@ -175,23 +175,23 @@ public class Panel extends JPanel implements KeyListener,
         panelState = 1;
         int x = (Window.getPanelWidth() *e.getX())/Window.getFrameWidth();
         int y = (Window.getPanelHeight()*e.getY())/Window.getFrameHeight();
-        game.down(x,y);
+        game.down(x,y,e.getButton()==3);
     }
     public void mouseDragged(MouseEvent e) { //move
         int x = (Window.getPanelWidth() *e.getX())/Window.getFrameWidth();
         int y = (Window.getPanelHeight()*e.getY())/Window.getFrameHeight();
-        game.move(x,y);
+        game.move(x,y,e.getButton()==3);
     }
     public void mouseReleased(MouseEvent e) { //up
         int x = (Window.getPanelWidth() *e.getX())/Window.getFrameWidth();
         int y = (Window.getPanelHeight()*e.getY())/Window.getFrameHeight();
-        game.up(x,y);
+        game.up(x,y,e.getButton()==3);
     }
     public void mouseMoved(MouseEvent e) { //hover
         //update cursor
         int x = (Window.getPanelWidth() *e.getX())/Window.getFrameWidth();
         int y = (Window.getPanelHeight()*e.getY())/Window.getFrameHeight();
-        game.hover(x,y);
+        game.hover(x,y,e.getButton()==3);
     }
     //update FPS
     public void updateFPS() {

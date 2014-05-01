@@ -10,6 +10,7 @@ public class Game {
     private Button camera;
     private Button link;
     private boolean draw;
+    private boolean erase;
     private double ticker;
     private int x;
     private int y;
@@ -26,7 +27,10 @@ public class Game {
     }
     public void update(double mod){
         points.update(mod);
-        if (draw || ticker > 0){
+        if (erase){
+            points.remove(x,y);
+        }
+        else if (draw || ticker > 0){
             if (ticker > 0) ticker-= mod;
             else {
                 ticker = 2;
@@ -51,26 +55,31 @@ public class Game {
     public void releaseR(){  }
 
     //mouse input
-    public void down(int x, int y){
+    public void down(int x, int y, boolean rightClick){
         if (camera.down(x,y)){}
         else if (link.down(x,y)){}
-        else draw = true;
+        else{
+            if (rightClick) erase=true;
+            else draw = true;
+        }
     }
-    public void up(int x, int y){
+    public void up(int x, int y, boolean rightClick){
         if (camera.up(x,y)) Window.panel.screenshot();
         else if (link.up(x,y)) {
             try { java.awt.Desktop.getDesktop().browse(java.net.URI.create("http://doppl3r.com/"));
             } catch (IOException e) { e.printStackTrace(); }
         }
         draw = false;
+        erase = false;
     }
-    public void move(int x, int y){
+    public void move(int x, int y, boolean rightClick){
         camera.move(x,y);
         link.move(x,y);
+        if (rightClick) System.out.println("hey");
         this.x=x;
         this.y=y;
     }
-    public void hover(int x, int y){
+    public void hover(int x, int y, boolean rightClick){
         camera.hover(x,y);
         link.hover(x,y);
         this.x=x;

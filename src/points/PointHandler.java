@@ -14,9 +14,9 @@ public class PointHandler {
     public PointHandler(){
         points = new LinkedList<MyPoint>();
         width = 3;
-        radius = 6;
+        radius = 5;
         maxHeight = 340;
-        speed = 5;
+        speed = 2;
     }
     public void draw(Graphics2D g){
         GradientPaint gp = new GradientPaint(
@@ -77,8 +77,19 @@ public class PointHandler {
         }
         else points.add(new MyPoint(x,y));
     }
-    public void remove(int index){
-        points.remove(index);
+    public void remove(int x, int y){
+        //check other points
+        for (int j = 0; j < points.size(); j++){
+            if (j < points.size()-1){
+                if (isCollision(
+                        points.get(j).getX(),points.get(j).getY(),
+                        points.get(j+1).getX(), points.get(j+1).getY(),
+                        x, y, radius)){
+                    points.remove(j);
+                    break;
+                }
+            }
+        }
     }
     public boolean isCollision(MyPoint p1, int r1, MyPoint p2, int r2){
         double a = r1 + r2;
