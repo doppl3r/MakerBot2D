@@ -89,10 +89,8 @@ public class Panel extends JPanel implements KeyListener,
         doubleBuffer();
 	}
     public void draw(Graphics2D g, boolean screenshot){
-        if (!screenshot){
-            g.setColor(Color.WHITE); //the color of the actual 320x240 game
-            g.fillRect(0,0,Window.getPanelWidth(),Window.getPanelHeight());
-        }
+        g.setColor(Color.WHITE); //the color of the actual 320x240 game
+        g.fillRect(0,0,Window.getPanelWidth(),Window.getPanelHeight());
 
         //draw components
         switch(panelState){
