@@ -7,6 +7,7 @@ public class Textures {
     public Image makerbotlogo;
     public Image camera;
     public Image intro;
+    public Image erase;
 
     public Textures(){
 		addResources();
@@ -16,5 +17,6 @@ public class Textures {
         makerbotlogo = new ImageIcon(this.getClass().getResource("/gui/makerbotlogo.png")).getImage();
         camera = new ImageIcon(this.getClass().getResource("/gui/camera.png")).getImage();
         intro = new ImageIcon(this.getClass().getResource("/gui/intro.png")).getImage();
+        erase = new ImageIcon(this.getClass().getResource("/gui/erase.png")).getImage();
     }
 }

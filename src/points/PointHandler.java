@@ -91,6 +91,12 @@ public class PointHandler {
             }
         }
     }
+    public void removeAll(){
+        int size = points.size();
+        for (int i = 0; i < size; i++){
+            points.remove(0);
+        }
+    }
     public boolean isCollision(MyPoint p1, int r1, MyPoint p2, int r2){
         double a = r1 + r2;
         double dx = p1.getX() - p2.getX();
